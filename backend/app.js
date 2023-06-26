@@ -1,14 +1,18 @@
 import { Leap } from '@leap-ai/sdk'
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
 dotenv.config()
 
-const leap = new Leap(process.env.LEAP_API_KEY)
 
+const leap = new Leap(process.env.LEAP_API_KEY)
 const app = express();
+app.use(cors())
 app.use(express.json());
 app.use(express.static("public"));
-const port = 3000;
+const port = 5000;
+
+
 
 app.post('/generate', async (req, res) => {
 
